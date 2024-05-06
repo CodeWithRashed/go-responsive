@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go Responsive - BY RASHED</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  </head>
+  <body>
+    <!-- component -->
+    <div id="tabs-group-4" class="tab-group tab-group--4">
+      <h2 class="tab-group__title">Get Responsive Rules</h2>
+
+      <div class="js-tabs" data-existing-hx="h3" data-tabs-prefix-class="hb">
+        <ul class="js-tablist">
+          <li class="js-tablist__item">
+            <a class="js-tablist__link" href="#font_size">Font Size</a>
+          </li>
+          <li class="js-tablist__item">
+            <a class="js-tablist__link" href="#padding">Padding</a>
+          </li>
+        </ul>
+        <div class="js-tabcontent" id="font_size">
+            <form id="input_form">
+                <div class="input-groups flex gap-5">
+                  <div class="mb-5">
+                    <label for="max-font" class="block mb-2 font-bold text-gray-600"
+                      >Max Font Size</label
+                    >
+                    <input
+                    required
+                      type="number"
+                      id="max-font"
+                      name="max-container"
+                      placeholder="Enter Font Size.."
+                      class="border border-gray-300 shadow p-3 w-full rounded outline-none text-gray-900"
+                    />
+                  </div>
+    
+                  <div class="mb-5">
+                    <label for="min-font" class="block mb-2 font-bold text-gray-600"
+                      >Min Font Size</label
+                    >
+                    <input
+                    required
+                      type="number"
+                      id="min-font"
+                      name="min-font"
+                      placeholder="Enter Font Size.."
+                      class="border border-gray-300 shadow p-3 w-full rounded outline-none text-gray-900"
+                    />
+                  </div>
+    
+                  <div class="mb-5">
+                    <label
+                      for="max-line-height"
+                      class="block mb-2 font-bold text-gray-600"
+                      >Max Line Height</label
+                    >
+                    <input
+                    required
+                      type="number"
+                      id="max-line-height"
+                      name="max-line-height"
+                      placeholder="Enter Line Hight.."
+                      class="border border-gray-300 shadow p-3 w-full rounded outline-none text-gray-900"
+                    />
+                  </div>
+    
+                  <div class="mb-5">
+                    <label
+                      for="min-line-height"
+                      class="block mb-2 font-bold text-gray-600"
+                      >Min Line Height</label
+                    >
+                    <input
+                    required
+                      type="number"
+                      id="min-line-height"
+                      name="min-line-height"
+                      placeholder="Enter Line Height.."
+                      class="border border-gray-300 shadow p-3 w-full rounded outline-none text-gray-900"
+                    />
+                  </div>
+                </div>
+    
+                <div class="line-height-groups grid grid-cols-2 gap-5">
+                  <div class="mb-5">
+                    <label
+                      for="max-container"
+                      class="block mb-2 font-bold text-gray-600"
+                      >Max Container Size</label
+                    >
+                    <input
+                    required
+                      type="number"
+                      id="max-container"
+                      name="max-container"
+                      placeholder="Enter Container Size.."
+                      class="border border-gray-300 shadow p-3 w-full rounded outline-none text-gray-900"
+                    />
+                  </div>
+    
+                  <div class="mb-5">
+                    <label
+                      for="min-container"
+                      class="block mb-2 font-bold text-gray-600"
+                      >Min Container Size</label
+                    >
+                    <input
+                    required
+                      type="number"
+                      id="min-container"
+                      name="min-container"
+                      placeholder="Enter Font Size.."
+                      class="border border-gray-300 shadow p-3 w-full rounded outline-none text-gray-900"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg"
+                >
+                  Get CSS Rule
+                </button>
+              </form>
+              <div id="result" style="display: none;">
+            </div>
+            <button id="copyButton" class="w-full text-center mt-5" style="display: none;">Copy to Clipboard</button>
+        </div>
+
+        <div class="js-tabcontent" id="padding">
+          
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
