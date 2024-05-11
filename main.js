@@ -187,14 +187,14 @@ setInputValue();
 // Function to calculate padding for "All Same" scenario
 function calculatePaddingForAllSame(maxPadding, minPadding, maxContainerSize, minContainerSize) {
   const scalingFactor = (maxPadding - minPadding) / (maxContainerSize - minContainerSize);
-  return `padding: clamp(${maxPadding}px, calc(${scalingFactor} * (100vw - ${minContainerSize}px) + ${minPadding}px), ${maxPadding}px);`;
+  return `padding: clamp(${minPadding}px, calc(${scalingFactor} * (100vw - ${minContainerSize}px) + ${minPadding}px), ${maxPadding}px);`;
 }
 
 // Function to calculate padding for "Different X and Y" scenario
 function calculatePaddingForDifferentXY(maxPaddingX, minPaddingX, maxPaddingY, minPaddingY, maxContainerSize, minContainerSize) {
   const scalingFactorX = (maxPaddingX - minPaddingX) / (maxContainerSize - minContainerSize);
   const scalingFactorY = (maxPaddingY - minPaddingY) / (maxContainerSize - minContainerSize);
-  return `padding: clamp(${maxPaddingY}px, calc(${scalingFactorY} * (100vw - ${minContainerSize}px) + ${minPaddingY}px), ${maxPaddingY}px) clamp(${maxPaddingX}px, calc(${scalingFactorX} * (100vw - ${minContainerSize}px) + ${minPaddingX}px), ${maxPaddingX}px);`;
+  return `padding: clamp(${minPaddingY}px, calc(${scalingFactorY} * (100vw - ${minContainerSize}px) + ${minPaddingY}px), ${maxPaddingY}px) clamp(${minPaddingY}px, calc(${scalingFactorX} * (100vw - ${minContainerSize}px) + ${minPaddingX}px), ${maxPaddingX}px);`;
 }
 
 
