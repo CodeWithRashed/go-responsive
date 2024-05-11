@@ -33,7 +33,7 @@ document
     const lineHeight = `line-height: clamp(${minLineHeight}px, calc(${lineHeightScalingFactor} * (100vw - ${minContainerSize}px) + ${minLineHeight}px), ${maxLineHeight}px);`;
 
     const calculationResult = `<pre
-    class="!bg-black !text-white !rounded !m-0 !mt-2 !p-0"
+    class=""
   ><code class="language-css">
       ${fontSize}
       ${lineHeight}
@@ -86,9 +86,11 @@ const setInputValue = () => {
 
   if (maxContainerSize) {
     document.getElementById("max-container").value = parseInt(maxContainerSize);
+    document.getElementById("max-container-padding").value = parseInt(maxContainerSize);
   }
   if (minContainerSize) {
     document.getElementById("min-container").value = parseInt(minContainerSize);
+    document.getElementById("min-container-padding").value = parseInt(minContainerSize);
   }
 };
 
@@ -143,7 +145,7 @@ document.getElementById("copyButton").addEventListener("click", function () {
 
 
 
-  // HANDLE RADIO BUTTON CHANGE
+// HANDLE RADIO BUTTON CHANGE
 document.addEventListener("DOMContentLoaded", function () {
   const handleRadioButtonChange = () => {
     const allSameRadioButton = document.getElementById("all_same");
@@ -156,9 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (allSameRadioButton.checked) {
       allSameInputGroup.style.display = "flex";
       differentXYInputGroup.style.display = "none";
+      resultContainer.classList.remove("show");
     } else if (differentXYRadioButton.checked) {
       allSameInputGroup.style.display = "none";
       differentXYInputGroup.style.display = "flex";
+      resultContainer.classList.remove("show");
+
     }
   };
 
@@ -195,85 +200,42 @@ function calculatePaddingForDifferentXY(maxPaddingX, minPaddingX, maxPaddingY, m
 
 
 
-//   // HANDLE RADIO BUTTON CHANGE
-// document.addEventListener("DOMContentLoaded", function () {
-//   function handleRadioButtonChange() {
-//     const allSameRadioButton = document.getElementById("all_same");
-  
-//     if (allSameRadioButton.checked) {
-//       const maxPadding = parseInt(document.getElementById("max-padding").value);
-//       const minPadding = parseInt(document.getElementById("min-padding").value);
-//       const maxContainerSize = parseInt(document.getElementById("max-container").value);
-//       const minContainerSize = parseInt(document.getElementById("min-container").value);
-  
-//       const paddingForAllSame = calculatePaddingForAllSame(maxPadding, minPadding, maxContainerSize, minContainerSize);
-  
-//       const calculationResult = `<pre class="!bg-black !text-white !rounded !m-0 !mt-2 !p-0"><code class="language-css">${paddingForAllSame}</code></pre>`;
-//       resultDiv.innerHTML = calculationResult;
-//       resultContainer.classList.add("show");
-//     } else {
-//       const maxPaddingX = parseInt(document.getElementById("max-padding-x").value);
-//       const minPaddingX = parseInt(document.getElementById("min-padding-x").value);
-//       const maxPaddingY = parseInt(document.getElementById("max-padding-y").value);
-//       const minPaddingY = parseInt(document.getElementById("min-padding-y").value);
-//       const maxContainerSize = parseInt(document.getElementById("max-container-padding").value);
-//       const minContainerSize = parseInt(document.getElementById("min-container-padding").value);
-  
-//       const paddingForDifferentXY = calculatePaddingForDifferentXY(maxPaddingX, minPaddingX, maxPaddingY, minPaddingY, maxContainerSize, minContainerSize);
-  
-//       const calculationResult = `<pre class="!bg-black !text-white !rounded !m-0 !mt-2 !p-0"><code class="language-css">${paddingForDifferentXY}</code></pre>`;
-//       resultDiv.innerHTML = calculationResult;
-//       resultContainer.classList.add("show");
-//     }
-//   }
-  
-//   // Add event listener to radio buttons
-//   document.getElementById("all_same").addEventListener("change", handleRadioButtonChange);
-//   document.getElementById("different_x_y").addEventListener("change", handleRadioButtonChange);
-  
-//   // Initially hide result container
-//   document.querySelector(".result-container").classList.remove("show");
-// });
 
 
-// //GET PADDING CALCULATION
-// document
-//   .getElementById("input_form_padding")
-//   .addEventListener("submit", function (event) {
-//     event.preventDefault();
 
-//     const maxContainerSize = document.getElementById(
-//       "max-container-padding"
-//     ).value;
-//     const minContainerSize = document.getElementById(
-//       "min-container-padding"
-//     ).value;
+//GET PADDING CALCULATION
+document.addEventListener("DOMContentLoaded", function () {
 
-//     // FONT SIZE INPUTS
-//     const maxFontSize = document.getElementById("max-font").value;
-//     const minFontSize = document.getElementById("min-font").value;
-//     const maxLineHeight = document.getElementById("max-line-height").value;
-//     const minLineHeight = document.getElementById("min-line-height").value;
-//     console.log("maxFontSize", maxContainerSize);
-//     console.log("maxFontSize", minContainerSize);
-//     console.log("maxFontSize", maxFontSize);
+  const getPaddingBtn = document.getElementById("get-padding-button")
 
-//     console.log("minFontSize", minFontSize);
-//     console.log("maxLineHeight", maxLineHeight);
-//     console.log("maxFontSize", maxFontSize);
-//     console.log("minLineHeight", minLineHeight);
+  getPaddingBtn.addEventListener("click", function() {
+    const allSameRadioButton = document.getElementById("all_same");
 
-//     const scalingFactor =
-//       (maxPadding - minPadding) / (maxContainerSize - minContainerSize);
-
-//     const paddingForAllSame = `padding: clamp(${maxPadding}px, calc(${scalingFactor} * (100vw - ${minContainerSize}px) + ${minPadding}px), ${maxPadding}px);`;
-    
-//     const calculationResult = `<pre
-//     class="!bg-black !text-white !rounded !m-0 !mt-2 !p-0"
-//   ><code class="language-css">
-//       ${paddingForAllSame}
-      
-// </code></pre>`;
-//     resultDiv.innerHTML = calculationResult;
-//     resultContainer.classList.add("show");
-//   });
+        if (allSameRadioButton.checked) {
+      const maxPadding = parseInt(document.getElementById("max-padding").value);
+      const minPadding = parseInt(document.getElementById("min-padding").value);
+      const maxContainerSize = parseInt(document.getElementById("max-container").value);
+      const minContainerSize = parseInt(document.getElementById("min-container").value);
+  
+      const paddingForAllSame = calculatePaddingForAllSame(maxPadding, minPadding, maxContainerSize, minContainerSize);
+  
+      const calculationResult = `<pre class="!bg-black !text-white !rounded !m-0 !mt-2 !p-0"><code class="language-css">${paddingForAllSame}</code></pre>`;
+      resultDiv.innerHTML = calculationResult;
+      resultContainer.classList.add("show");
+    } else {
+      const maxPaddingX = parseInt(document.getElementById("max-padding-x").value);
+      const minPaddingX = parseInt(document.getElementById("min-padding-x").value);
+      const maxPaddingY = parseInt(document.getElementById("max-padding-y").value);
+      const minPaddingY = parseInt(document.getElementById("min-padding-y").value);
+      const maxContainerSize = parseInt(document.getElementById("max-container-padding").value);
+      const minContainerSize = parseInt(document.getElementById("min-container-padding").value);
+  
+      const paddingForDifferentXY = calculatePaddingForDifferentXY(maxPaddingX, minPaddingX, maxPaddingY, minPaddingY, maxContainerSize, minContainerSize);
+  
+      const calculationResult = `<pre class="!bg-black !text-white !rounded !m-0 !mt-2 !p-0"><code class="language-css">${paddingForDifferentXY}</code></pre>`;
+      resultDiv.innerHTML = calculationResult;
+      resultContainer.classList.add("show");
+    }
+  })
+  
+});
